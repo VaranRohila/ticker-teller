@@ -1,14 +1,17 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from pymongo import MongoClient
 from bson.json_util import dumps
 from bson import ObjectId
 from src.mongo_scripts.mongo_read import MongoRead
+
 import numpy as np
 import gc
 
 import joblib
 
 from tensorflow import keras
+import json
+
 
 app = Flask(__name__)
 
@@ -35,25 +38,27 @@ def serialize_doc(doc):
             doc[key] = [serialize_doc(item) for item in value]
     return doc
 
+
+
 ##### API Routes ######
 @app.route('/', methods=['GET'])
 def get_companies():
     try:
         companies_collection = db.Companies
         companies = list(companies_collection.find({}, {'_id': 0}))  # Exclude the '_id' field
-        return jsonify(companies), 200
+        return render_template('index.html', companies=companies)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
+
 @app.route('/article/<articleId>', methods=['GET'])
 def get_article_data(articleId):
     try:
         articleData = mongoRead.get_news_articles_by_goid(articleId)
-        articleData = serialize_doc(articleData) 
-        
-        return jsonify(articleData), 200
+        return render_template('article.html', article = articleData[0])
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
 
 @app.route('/newsArticleData/<companyId>')
 def getNewsArticlesForCompany(companyId):
