@@ -27,15 +27,13 @@ class MongoRead:
     
     def get_stock_series_for_last_month(self, id, currDate):
         currDate = parser.parse(currDate)
-        prevDate = currDate - timedelta(days=30)
         query = {
             "CID": int(id),
             "Date": {
-                "$gte": prevDate,
                 "$lte": currDate 
             }
         }
-        curr = self.db['StockSeries'].find(query).sort('Date', -1)
+        curr = self.db['StockSeries'].find(query).sort('Date', -1).limit(30)
         return list(curr)
 
     def get_news_articles(self, id):
@@ -48,6 +46,12 @@ class MongoRead:
         curr = self.db['NewsArticles'].find(query)
         return list(curr)
     
+    def get_news_articles_filter_date(self, id, date):
+            date = parser.parse(date)
+            query = {'CID': int(id), 'Date': date}
+            curr = self.db['NewsArticles'].find(query)
+            return list(curr)
+
     def get_news_articles_by_date(self, id):
         query = {'CID': int(id)}
         curr = self.db['NewsArticles'].find(query).sort("Date", -1).limit(20)
