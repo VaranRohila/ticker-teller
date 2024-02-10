@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="app.css">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+
+    <title>SentiStock</title>
+</head>
+
+<body>
+    <!--Navigation Bar-->
+    <nav id="mainNavbar" class="navbar navbar-dark py-0 fixed-top">
+        <a href="#" class="navbar-brand">SentiStock</a>
+        <button id = "info_button" class="toggleOverlay plain_button btn">
+            <i class="bi bi-info-circle"></i>
+        </button>
+    </nav>
+
+    <!--Sectors Section-->
+    <section id = 'sectors' class="container-fluid px-0">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <div id="headingGroup" class="text-white text-center mt-5">
+                    <h1> Select a Sector:</h1>
+                </div>
+                <div class="buttons row mt-4 text-center text-black" >
+                    <div class="big_card col-4" >
+                        <button id = 'sb1'class="sector btn btn-block btn-square" >Software</button>
+                    </div>
+                    <div class="big_card col-4">
+                        <button id = 'sb3' class="sector btn btn-block btn-square" >Finance</button>
+                    </div>
+                    <div class="big_card col-4">
+                        <button id = 'sb4' class="sector btn btn-block btn-square" >Manufacturing</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!--Companies Section-->
+
+    <section id = "companies" class="container-fluid px-0">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                
+                <div id="headingGroup" class="d-flex justify-content-between align-items-center text-white text-center mt-5">
+                    <h1 class="mx-auto"> Select a Company:</h1>
+                    <span class="position-absolute" style="left: 50;"> <button id="c_back" class="plain_button back_button btn">
+                        <i class="bi bi-arrow-left-short"></i>
+                    </button></i>
+                    </span> <!-- This will be on the same line as H1 -->
+
+                </div>
+                <div class="buttons row mt-4 text-center text-black">
+                    <div class="big_card col-3">
+                        <button id = 'cb1' class="company btn btn-block btn-square"></button>
+                    </div>
+                    <div class="big_card col-3">
+                        <button id = 'cb2' class="company btn btn-block btn-square"> </button>
+                    </div>
+                    <div class="big_card col-3">
+                        <button id='cb3' class="company btn btn-block btn-square"></button>
+                    </div>
+                    <div class="big_card col-3">
+                        <button id='cb4' class="company btn btn-block btn-square"></button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!--Results Section-->
+
+    <section id = "results" class="container-fluid px-0">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <div id="headingGroup" class="d-flex justify-content-between align-items-center text-white text-center mt-5">
+                    <h1 class="mx-auto"> Results:</h1>
+                    <span class="position-absolute" style="left: 50;"> <button id = 'r_back' class="plain_button back_button btn">
+                        <i class="bi bi-arrow-left-short"></i>
+                    </button></i>
+                    </span> <!-- This will be on the same line as H1 -->
+
+                </div>
+                <div class="row">
+                    <!-- Assign half the width to each on large screens -->
+                    <div id="graph" class="col-lg-7">
+                        <!-- Graph content goes here -->
+                        <canvas id="myChart"></canvas>
+
+                    </div>
+                    <div id="chart" class="col-lg-5">
+                        <table class="table text-white">
+                            <thead>
+                              <tr>
+                                <th scope="col">Text</th>
+                                <th scope="col">Sentiment</th>
+                                <th scope="col">Impact</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">"Good"</th>
+                                <td>Postive</td>
+                                <td>.9</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">"Meh..."</th>
+                                <td>Neutral</td>
+                                <td>.2</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">"Bad"</th>
+                                <td>Negative</td>
+                                <td>.3</td>
+                              </tr>
+                            </tbody>
+                          </table>                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!--Info Overlay-->
+    <div id="overlay" style="display:none;">
+        <div id="text">
+            <h2>?</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid facere dolor ab nobis nesciunt exercitationem soluta ipsam eligendi optio et quam quae eos harum magni id repellendus, quo eius reprehenderit.</p>
+            <button class='toggleOverlay'>Close</button>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <script>
+        //Make Home Button Refresh Page
+        document.addEventListener('DOMContentLoaded', function() {
+            var navHeader = document.querySelector('.navbar-brand');
+            navHeader.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent the default anchor behavior
+                window.location.reload(); // Refresh the page
+            });
+        });
+
+        //Make Chart
+        const ctx = document.getElementById('myChart');
+        // const labels = Utils.months({count: 7});
+        
+        new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [{
+            label: 'Sentiment',
+            data: [69, 45, 78, 92, 60, 59, 42],
+            borderWidth: 1,
+            borderDash: [5, 5],
+            borderColor: 'rgb(255,255,255)', // Set line color here
+            },
+            {
+            label: 'Stock',
+            data: [68, 59, 80, 81, 56, 55, 40],
+            borderWidth: 1,
+            borderColor: 'rgb(255,255,255)',
+            }]
+        },
+        options: {
+            plugins: {
+                    legend: {
+                        labels: {
+                            color: 'white' // Change legend text color
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Sentiment vs. Stock',
+                        color: 'white', // Change title text color
+                        font: {
+                            size: 18 // Change title font size
+                        }
+                    }
+                },
+            scales: {
+                x: { // Targeting the x-axis
+                    ticks: {
+                        color: 'white' // Set the color of the x-axis labels
+                    },
+                    title: {
+                        display: true,
+                        text: 'Month',
+                        color: 'white' // You can also set the color of the axis title here
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: 'white' // Set the color of the x-axis labels
+                    },
+                    title: {
+                        display: true,
+                        text: 'Month',
+                        color: 'white' // You can also set the color of the axis title here
+                    }
+                },
+            }
+        }
+        });
+
+        //Scroll to Top on Page Refresh
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        }
+
+        //Companies Variables
+        let companies;
+
+        let selected_company;
+
+        //Toggle Overlay
+        function toggleOverlay() {
+            var overlay = document.getElementById("overlay");
+            overlay.style.display = overlay.style.display == "block" ? "none" : "block";
+        }
+
+        //Set Companies Variable
+        function set_companies(c){
+            $('#companies .btn-square').each(function(index) {
+                if(index < c.length) {
+                    $(this).text(c[index]); // Set the button text to the company name
+                } else {
+                    $(this).text('N/A'); // Optional: Set a default text for buttons without a corresponding company
+                }
+            });
+
+        }
+
+        //Scroll to section of Page
+        function scroll(section){
+                $(section).get(0).scrollIntoView({ behavior: 'smooth' });
+            }
+
+        //Dim section
+        function dim(item){
+            $(item).css({
+                    'transition': 'opacity 0.5s ease',
+                    'opacity': '.3'
+                });    
+        }
+
+        //Brighten section
+        function brighten(item){
+            $(item).css({
+                    'transition': 'opacity 0.5s ease',
+                    'opacity': '1'
+                }); 
+        }
+
+        // $(function () {
+        //     $(document).scroll(function () {
+        //         var $nav = $("#mainNavbar");
+        //         $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+        //     });
+        // });
+
+        // $(document).ready(function() {
+
+        //Buttons
+
+        //Dimming and Scrolling
+        $('.sector').click(function() {
+            dim('#sectors');
+            scroll('#companies');
+            brighten('#companies');
+
+        });
+        
+        $('#c_back').click(function() {
+            scroll('#sectors');
+            brighten('#sectors');
+            dim('#companies')
+
+        });
+
+        $('#r_back').click(function() {
+            scroll('#companies');
+            brighten('#companies');
+            dim('#results')
+        });
+
+
+        $('.company').click(function() {
+            dim('#companies');
+            brighten('#results');
+            scroll("#results");
+
+        });
+
+        //Toggling Overlay
+        $('.toggleOverlay').click(function() {
+                toggleOverlay()
+        });
+
+        //Set companies based on sector
+        $('#sb1').click(function() {
+            companies = ['Microsoft','SalesForce', 'Apple','Alphabet'];
+            set_companies(companies);
+        });
+
+        $('#sb2').click(function() {
+            companies = ['CVS', 'Cigna', 'UHG', 'Cencora'];
+            set_companies(companies);
+        });
+
+        $('#sb3').click(function() {
+            companies = ['Morgan Stanley', 'Goldman Sachs', 'JPM', 'Mastercard'];
+            set_companies(companies);
+        });
+
+        $('#sb4').click(function() {
+            companies = ['General Motors', 'Boeing', 'Ford', 'Tesla'];
+            set_companies(companies);
+        });
+
+        //Get Company Name based on button clicked
+        $('.company').click(function() {
+        // Get the ID of the clicked button
+        selected_company = $(this).text().trim();
+        
+        // Find the corresponding title
+        // const resultTitle = companyTitles[buttonId];
+        
+        // Update the results section title
+        $('#results h1').text(selected_company);
+        
+    });
+
+
+
+
+        // });
+
+    </script>
+</body>
+
+</html>
