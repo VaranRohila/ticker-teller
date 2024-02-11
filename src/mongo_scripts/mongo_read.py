@@ -53,7 +53,10 @@ class MongoRead:
             'Title': 1,
             'Date': 1,
             'sentiment': 1,
-            'impact_score': 1
+            'impact_score': 1,
+            'evidence': 1,
+            'stock_movement': 1,
+            'explaination': 1
         }
         curr = self.db['NewsArticles'].find(query, params).sort("Date", -1)
         return list(curr)
