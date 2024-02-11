@@ -40,7 +40,7 @@ page = """
 <|toggle|theme|>
 <|25 75|layout|gap=30px|
 <|sidebar|
-#### View **NewsBuddy**{: .color-primary} Insights:
+#### View **News**{: .color-primary} Insights:
 <|{current_goid}|selector|lov={news_goids}|label=Select Article By ID|dropdown|on_change=on_goid_filter|class_name=fullwidth|>
 <small> Powered by **GPT-3.5-Turbo**{: .color-primary} </small>
 <hr/>
