@@ -6,7 +6,7 @@ Our platform has been developed to tackle the challenge faced by prospective inv
 
 #### **Key Features:**
 **Ensemble Machine Learning Forecasting Model:** At the heart of our platform is an ensemble model that merges the predictive capabilities of LSTM networks for Time Series Forecasting with sophisticated sentiment analysis. This model is specifically tailored to analyze time series data, gauge market sentiment from Wall Street Journal articles, and provide accurate future predictions.<br>
-* **Comprehensive Sentiment Analysis:** Understanding the impact of news on stock prices is crucial. Our platform does not just predict stock movements; it dives deep into the sentiment conveyed in financial news articles, providing a layer of insight that is often missed in traditional analysis.<br>
+**Comprehensive Sentiment Analysis:** Understanding the impact of news on stock prices is crucial. Our platform does not just predict stock movements; it dives deep into the sentiment conveyed in financial news articles, providing a layer of insight that is often missed in traditional analysis.<br>
 **Evidence-Based Predictions:** We go a step further by correlating our predictions with evidence extracted from the news articles. This approach not only enhances the reliability of our predictions but also offers investors a transparent view of the rationale behind predicted stock movements.<br>
 **User-Friendly Dashboard:** All of these features are seamlessly integrated into an intuitive dashboard, making complex data easily accessible and understandable. Investors can quickly get a snapshot of future stock prices along with actionable insights, empowering them to make well-informed decisions.<br>
 
