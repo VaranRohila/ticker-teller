@@ -22,7 +22,15 @@ class MongoRead:
     
     def get_stock_series(self, id):
         query = {'CID': id}
-        curr = self.db['Companies'].find(query)
+        params = {
+            '_id': 0,
+            'Date': 1,
+            'Close': 1,
+            'Open': 1,
+            'High': 1,
+            'Low': 1
+        }
+        curr = self.db['StockSeries'].find(query).sort('Date', -1)
         return list(curr)
     
     def get_stock_series_for_last_month(self, id, currDate):
@@ -38,7 +46,19 @@ class MongoRead:
 
     def get_news_articles(self, id):
         query = {'CID': id}
-        curr = self.db['NewsArticles'].find(query).sort("Date", -1)
+        params = {
+            '_id': 0,
+            'CID': 1,
+            'GOID': 1,
+            'Title': 1,
+            'Date': 1,
+            'sentiment': 1,
+            'impact_score': 1,
+            'evidence': 1,
+            'stock_movement': 1,
+            'explaination': 1
+        }
+        curr = self.db['NewsArticles'].find(query, params).sort("Date", -1)
         return list(curr)
     
     def get_news_articles_by_goid(self, id):
