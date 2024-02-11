@@ -73,7 +73,7 @@ def getNewsArticlesForCompany(companyId):
             "ArticlesByDate": articles_by_date,
             "ArticlesByImpactFactor": articles_by_impact_factor
         }
-        return jsonify(result), 200
+        return render_template('result.html', result = result)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 

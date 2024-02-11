@@ -54,10 +54,26 @@ class MongoRead:
 
     def get_news_articles_by_date(self, id):
         query = {'CID': int(id)}
-        curr = self.db['NewsArticles'].find(query).sort("Date", -1).limit(20)
+        params = {
+            '_id': 0,
+            'GOID': 1,
+            'Title': 1,
+            'Date': 1,
+            'sentiment': 1,
+            'impact_score': 1
+        }
+        curr = self.db['NewsArticles'].find(query, params).sort("Date", -1).limit(10)
         return list(curr)
     
     def get_news_articles_by_impact_score(self, id):
         query = {'CID': int(id)}
-        curr = self.db['NewsArticles'].find(query).sort("impact_score", -1).limit(20)
+        params = {
+            '_id': 0,
+            'GOID': 1,
+            'Title': 1,
+            'Date': 1,
+            'sentiment': 1,
+            'impact_score': 1
+        }
+        curr = self.db['NewsArticles'].find(query, params).sort("impact_score", -1).limit(10)
         return list(curr)
