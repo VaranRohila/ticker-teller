@@ -1,6 +1,9 @@
 ## TickerTeller | Hacklytics 2024
 Project Link: https://devfolio.co/projects/tickerteller-2d2a
 
+<img width="1437" alt="tickerTeller" src="https://github.com/namanlalitnyu/ticker-teller/assets/149608140/2ab4a510-ef7f-477b-8f22-81dfdf367da6">
+
+
 ### **Project Overview: Solving the Investment Puzzle**
 
 Our platform has been developed to tackle the challenge faced by prospective investors seeking accurate predictions of stock prices for their companies of interest. It integrates an ensemble machine learning model that combines LSTM-based time series forecasting and sentiment analysis from Wall Street Journal articles, offering insights into anticipated stock movements and the underlying reasons from the news. This holistic approach enables investors to access well-rounded predictions of future stock prices, enhanced by several additional functionalities designed to support informed investment decisions.
