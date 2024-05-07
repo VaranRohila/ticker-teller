@@ -1,4 +1,8 @@
 ## TickerTeller | Hacklytics 2024
+Project Link: https://devfolio.co/projects/tickerteller-2d2a
+
+<img width="1437" alt="tickerTeller" src="https://github.com/namanlalitnyu/ticker-teller/assets/149608140/2ab4a510-ef7f-477b-8f22-81dfdf367da6">
+
 
 ### **Project Overview: Solving the Investment Puzzle**
 
